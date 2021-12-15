@@ -29,22 +29,12 @@ Route::get('get/users',function(){
        'status' => false
    ]);
 });
-Route::post('user/register',function(Request $request){
-   $userCreate = User::create([
-       'name' => $request->name,
-       'email' => $request->email,
-       'password' => bcrypt($request->password)
-   ]);
-   $success['token'] = $userCreate->createToken('MyApp')->accessToken;
-   return response()->json([
-      'message' => 'user created',
-      'status' => true,
-      'token' => $success['token'],
-   ]);
-});
+// http methods
 Route::post('create/post','postController@createPost');
 Route::put('edit/post','postController@updatePost');
 Route::delete('delete/post','postController@deletePost');
+
+Route::post('user/register','userController@register');
 //Route::middleware('auth:api')->get('/user', function (Request $request) {
 //    return $request->user();
 //});
