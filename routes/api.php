@@ -38,6 +38,7 @@ Route::delete('delete/post','postController@deletePost');
 Route::post('user/register','userController@register');
 // login api
 Route::post('user/login','userController@login');
-//Route::middleware('auth:api')->get('/user', function (Request $request) {
-//    return $request->user();
-//});
+// end login and register api
+Route::group(['middleware' => 'auth:api'],function(){
+    Route::get('categories','categoryController@getCategories');
+});
