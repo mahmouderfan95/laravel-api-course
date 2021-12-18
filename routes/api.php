@@ -33,8 +33,11 @@ Route::get('get/users',function(){
 Route::post('create/post','postController@createPost');
 Route::put('edit/post','postController@updatePost');
 Route::delete('delete/post','postController@deletePost');
-
+// end http methods
+// register and login api
 Route::post('user/register','userController@register');
+// login api
+Route::post('user/login','userController@login');
 //Route::middleware('auth:api')->get('/user', function (Request $request) {
 //    return $request->user();
 //});
