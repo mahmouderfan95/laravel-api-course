@@ -41,4 +41,5 @@ Route::post('user/login','userController@login');
 // end login and register api
 Route::group(['middleware' => 'auth:api'],function(){
     Route::get('categories','categoryController@getCategories');
+    Route::get('getProducts','categoryController@getProducts');
 });
