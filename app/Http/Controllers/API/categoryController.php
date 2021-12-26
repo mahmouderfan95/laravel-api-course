@@ -53,4 +53,29 @@ class categoryController extends Controller
             ],500);
         }
     }
+
+    public function productDetails(Request $request){
+        try{
+            $product = Product::where('id',$request->product_id)
+                ->select(['id','name','description','price','image','color','size'])
+                ->first();
+            if($product){
+                return response()->json([
+                   'data' => $product,
+                   'message' => 'success message',
+                   'status' => true
+                ]);
+            }
+            return response()->json([
+                'message' => 'product not found',
+                'status' => false
+            ],400);
+
+        }catch (\Exception $exception){
+            return response()->json([
+               'message' => $exception->getMessage(),
+               'status' => false,
+            ],500);
+        }
+    }
 }
