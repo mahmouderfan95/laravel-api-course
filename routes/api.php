@@ -43,4 +43,6 @@ Route::group(['middleware' => 'auth:api'],function(){
     Route::get('categories','categoryController@getCategories');
     Route::get('getProducts','categoryController@getProducts');
     Route::get('product/details','categoryController@productDetails');
+    Route::post('add/product/favorite','favoriteController@addProduct');
+    Route::get('get/products/favorite','favoriteController@getProducts');
 });
